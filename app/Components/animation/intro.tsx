@@ -3,7 +3,6 @@
 // @ts-ignore
 import * as THREE from 'three';
 import React, { useRef, useEffect } from 'react';
-import Rectangle from './rectangle.js'
 
 const Animation: React.FC = () => {
     const canvasRef = useRef<HTMLDivElement>(null);
@@ -72,9 +71,6 @@ const Animation: React.FC = () => {
         // Add the wireframe to the mesh
         mesh.add(wireframe);
 
-
-
-        // scene.add(rectangle2);
 
 
         const animate = () => {
