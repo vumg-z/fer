@@ -45,41 +45,34 @@ const Animation: React.FC = () => {
 
         // Create the geometry with the adjusted width and height
         const geometry = new THREE.PlaneGeometry(squareWidth, squareHeight);
+
+        // Create a material for the square with black color
         const material = new THREE.MeshBasicMaterial({
+            color: 0x000000, // Set the color to black
+        });
+
+        const mesh = new THREE.Mesh(geometry, material);
+
+        mesh.position.set(0, 0, -1);
+
+        // Add the mesh to the scene
+        scene.add(mesh);
+
+        // Create the wireframe geometry for the border lines
+        const wireframeGeometry = new THREE.EdgesGeometry(geometry);
+
+        // Create a material for the wireframe with white color
+        const wireframeMaterial = new THREE.LineBasicMaterial({
             color: 0xffffff, // Set the color to white
-            side: THREE.DoubleSide, // Render both sides of the plane
-            wireframe: false, // Render wireframe
         });
 
-        const vertex = new THREE.Mesh(geometry, material);
+        // Create the wireframe mesh
+        const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
 
-        vertex.position.set(0, 0, -1);
+        // Add the wireframe to the mesh
+        mesh.add(wireframe);
 
-        scene.add(vertex)
 
-        // Clone the vertex mesh to create a smaller rectangle
-        const rectangle = vertex.clone();
-        rectangle.material = new THREE.MeshBasicMaterial({
-            color: 0x000000, // Green color
-            side: THREE.DoubleSide,
-        });
-
-        rectangle.scale.set(0.99, .99, 1); // Scale the rectangle to be 90% smaller
-        rectangle.position.z = vertex.position.z + 1; // Set a higher Z-index for the rectangle
-        rectangle.position.x = vertex.position.x - window.innerWidth / 2 + (paddingWidth + paddingWidth + squareWidth) / 2;
-        
-        scene.add(rectangle);
-
-        // Clone the vertex mesh to create a smaller rectangle
-        const rectangle2 = vertex.clone();
-        rectangle2.material = new THREE.MeshBasicMaterial({
-            color: 0x000000, // Green color
-            side: THREE.DoubleSide,
-        });
-
-        rectangle2.scale.set(.99, .99, 1); // Scale the rectangle to be 90% smaller
-        rectangle2.position.z = vertex.position.z + 1; // Set a higher Z-index for the rectangle
-        rectangle2.position.x = vertex.position.x - window.innerWidth / 2 + (paddingWidth + paddingWidth + squareWidth) / 2;
 
         // scene.add(rectangle2);
 
