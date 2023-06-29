@@ -22,7 +22,7 @@ const Animation: React.FC = () => {
         );
 
         camera.position.z = 1;
-        camera.position.x = 1;
+        camera.position.x = 0;
         camera.position.y = 0;
 
         const renderer = new THREE.WebGLRenderer();
@@ -70,8 +70,6 @@ const Animation: React.FC = () => {
 
         // Add the wireframe to the mesh
         mesh.add(wireframe);
-
-
 
         const animate = () => {
             requestAnimationFrame(animate);
