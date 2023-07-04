@@ -45,7 +45,7 @@ export default function Home(): JSX.Element {
     <div>
       {/* <Nav /> */}
       <Intro />
-      <Header text="Relikia" style={headerStyle} />
+      <Header text="relikia" style={headerStyle} />
 
     </div>
   )

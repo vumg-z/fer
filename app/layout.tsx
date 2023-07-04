@@ -1,7 +1,11 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import Retroica from '@next/font/local'
 
-const inter = Inter({ subsets: ['latin'] })
+// Font files can be colocated inside of `pages`
+const retroica = Retroica({ 
+  src: '/../public/retroica/Retroica.ttf' 
+  }
+)
 
 export const metadata = {
   title: 'Fer',
@@ -15,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={retroica.className}>{children}</body>
     </html>
   )
 }
